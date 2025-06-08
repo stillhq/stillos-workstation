@@ -19,7 +19,7 @@ jobs:
     outputs:
       LATEST_TAG: ${{ steps.set.outputs.LATEST_TAG }}
       REGISTRY: ${{ steps.set.outputs.REGISTRY }}
-      REGISTRY_USER: "cameronknauff+stillhq_ci"
+      REGISTRY_USER: ${{ steps.set.outputs.REGISTRY_USER }}
       PLATFORMS: ${{ steps.set.outputs.PLATFORMS }}
       IMAGE_PATH: ${{ steps.set.outputs.IMAGE_PATH }}
       IMAGE_NAME: ${{ steps.set.outputs.IMAGE_NAME }}
@@ -37,7 +37,7 @@ jobs:
           fi
 
           REGISTRY=ghcr.io
-          REGISTRY_USER=${{ cameronknauff+stillhq_ci }}
+          REGISTRY_USER=cameronknauff+stillhq_ci
           IMAGE_PATH=${{ github.repository_owner }}
           IMAGE_NAME=${{ github.event.repository.name }}
           PLATFORMS="amd64"

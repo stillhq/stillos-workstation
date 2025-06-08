@@ -14,7 +14,8 @@ echo "Swapping GNOME"
 dnf swap -y gnome-shell https://download.copr.fedorainfracloud.org/results/still/stillos-alma/epel-10-x86_64/09130546-gnome-shell/gnome-shell-47.4-2.el10.alma.2.x86_64.rpm
 
 echo "Installing stillOS Packages"
-dnf install -y plymouth-theme-still-spinner still-control stillcenter swai swai-inst stillcount https://kojipkgs.fedoraproject.org//packages/gnome-shell-extension-just-perfection/34.0/1.el10_1/noarch/gnome-shell-extension-just-perfection-34.0-1.el10_1.noarch.rpm adw-gtk3-theme
+dnf install -y plymouth-theme-still-spinner still-control stillcenter swai swai-inst stillcount-client adw-gtk3-theme gnome-shell-extension-desktop-icons-ng
+dnf install -y https://kojipkgs.fedoraproject.org//packages/gnome-shell-extension-just-perfection/34.0/1.el10_1/noarch/gnome-shell-extension-just-perfection-34.0-1.el10_1.noarch.rpm
 
 echo "Installing misc packages..."
 dnf install -y git lorax \
@@ -22,6 +23,6 @@ dnf install -y git lorax \
     fuse
 
 systemctl disable rpm-ostree-countme.service
-#systemctl enable stillcount.service
+systemctl enable stillcount.service
 systemctl enable sam.service
 

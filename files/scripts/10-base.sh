@@ -7,10 +7,6 @@ set -xeuo pipefail
 dnf install -y 'dnf-command(config-manager)'
 dnf config-manager --set-enabled crb
 
-if [[ "${VARIANT}" == "gnome" ]]; then
-    echo "Installing gnome"
-elif [[ "${VARIANT}" == "kde" ]]; then
-    echo "Installing kde"
-else
-    echo "Neutral variant"
-fi
+dnf config-manager --add-repo https://gitlab.com/stillhq/stillOS/packages/stillos-release-final/-/raw/a10/stillos-alma.repo
+dnf install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-10.noarch.rpm
+

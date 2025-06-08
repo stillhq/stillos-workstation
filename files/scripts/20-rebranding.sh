@@ -7,9 +7,11 @@ set -xeuo pipefail
 echo "Swapping OS release files"
 rm -rf /usr/share/almalinux-release 
 
-dnf swap -y almalinux-release stillos-release
-dnf swap -y almalinux-repos stillos-repos
+dnf swap -y almalinux-kitten-repos stillos-repos
+dnf swap -y almalinux-kitten-release stillos-release
 dnf install -y stillos-gpg-keys
+
+dnf distro-sync -y
 
 # Branding
 dnf swap -y almalinux-logos stillos-logos

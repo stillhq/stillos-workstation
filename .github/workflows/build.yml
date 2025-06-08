@@ -75,7 +75,7 @@ jobs:
       REGISTRY: ${{ needs.set-env.outputs.REGISTRY }}
       REGISTRY_USER: ${{ needs.set-env.outputs.REGISTRY_USER }}
     secrets:
-      REGISTRY_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      REGISTRY_TOKEN: ${{ secrets.QUAY_PASSWORD }}
       SIGNING_SECRET: ${{ secrets.SIGNING_SECRET }}
     permissions:
       contents: read
@@ -123,7 +123,7 @@ jobs:
       REGISTRY: ${{ needs.set-env.outputs.REGISTRY }}
       REGISTRY_USER: ${{ needs.set-env.outputs.REGISTRY_USER }}
     secrets:
-      REGISTRY_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      REGISTRY_TOKEN: ${{ secrets.QUAY_PASSWORD }}
     permissions:
       packages: write
 

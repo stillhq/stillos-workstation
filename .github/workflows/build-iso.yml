@@ -31,7 +31,7 @@ jobs:
           fi
 
           REGISTRY=quay.io
-          REGISTRY_USER=${{ github.actor }}
+          REGISTRY_USER=stillhq+github_ci
           IMAGE_PATH=${{ github.repository_owner }}
           IMAGE_NAME=${{ github.event.repository.name }}
           PLATFORMS="amd64"

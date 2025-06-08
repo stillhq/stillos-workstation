@@ -13,7 +13,7 @@ dnf install -y stillos-gpg-keys
 
 # Branding
 dnf swap -y almalinux-logos stillos-logos
-dnf swap -y almalinux-backgrounds stillos-backgrounds
+dnf swap -y almalinux-backgrounds stillos-backgrounds-1000
 
 # Flatpak
 mkdir -p /etc/flatpak/remotes.d

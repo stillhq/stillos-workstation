@@ -5,13 +5,15 @@ set -ouex pipefail
 CONTEXT_PATH="$(realpath "$(dirname "$0")/..")" # should return /ctx
 BUILD_SCRIPTS_PATH="$(realpath "$(dirname "$0")")"
 
+printf "::group:: === Fixing Execute Perms ===\n"
+chmod +x "${CONTEXT_PATH}/system_files/*.bash"
+
 printf "::group:: === Copying files ===\n"
 cp -avf "${CONTEXT_PATH}/system_files/." /
 printf "::endgroup::\n"
 
 for script in $(find ${BUILD_SCRIPTS_PATH} -maxdepth 1 -iname "*-*.sh" -type f | sort --sort=human-numeric); do
   printf "::group:: === $(basename "$script") ===\n"
-  chmod +x $script
   "$(realpath $script)"
   printf "::endgroup::\n"
 done

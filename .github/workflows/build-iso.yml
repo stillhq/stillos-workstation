@@ -30,7 +30,7 @@ jobs:
             echo "LATEST_TAG=latest" >> $GITHUB_OUTPUT
           fi
 
-          REGISTRY=ghcr.io
+          REGISTRY=quay.io
           REGISTRY_USER=${{ github.actor }}
           IMAGE_PATH=${{ github.repository_owner }}
           IMAGE_NAME=${{ github.event.repository.name }}

@@ -11,8 +11,6 @@ dnf swap -y almalinux-kitten-repos stillos-repos
 dnf swap -y almalinux-kitten-release stillos-release
 dnf install -y stillos-gpg-keys
 
-dnf distro-sync -y
-
 # Branding
 dnf swap -y almalinux-logos stillos-logos
 dnf swap -y almalinux-backgrounds stillos-backgrounds

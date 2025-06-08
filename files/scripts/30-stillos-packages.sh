@@ -22,6 +22,6 @@ dnf install -y git lorax \
     fuse
 
 systemctl disable rpm-ostree-countme.service
-systemctl enable stillcount.service
+#systemctl enable stillcount.service
 systemctl enable sam.service
 

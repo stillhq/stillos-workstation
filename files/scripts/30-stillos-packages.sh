@@ -11,7 +11,8 @@ dnf install -y --nobest  \
 
 
 echo "Swapping GNOME"
-dnf swap -y gnome-shell https://download.copr.fedorainfracloud.org/results/still/stillos-alma/epel-10-x86_64/09130546-gnome-shell/gnome-shell-47.4-2.el10.alma.2.x86_64.rpm
+dnf remove -y gnome-shell-extension-background-logo
+dnf swap -y gnome-shell https://download.copr.fedorainfracloud.org/results/still/stillos-alma/epel-10-x86_64/09147899-gnome-shell/gnome-shell-47.4-2.el10.still.2.x86_64.rpm
 
 echo "Installing stillOS Packages"
 dnf install -y https://kojipkgs.fedoraproject.org//packages/gnome-shell-extension-just-perfection/34.0/1.el10_1/noarch/gnome-shell-extension-just-perfection-34.0-1.el10_1.noarch.rpm

@@ -16,7 +16,7 @@ dnf swap -y gnome-shell https://download.copr.fedorainfracloud.org/results/still
 
 echo "Installing stillOS Packages"
 dnf install -y https://kojipkgs.fedoraproject.org//packages/gnome-shell-extension-just-perfection/34.0/1.el10_1/noarch/gnome-shell-extension-just-perfection-34.0-1.el10_1.noarch.rpm
-dnf install -y plymouth-theme-still-spinner still-control stillcenter swai swai-inst stillcount-client adw-gtk3-theme gnome-shell-extension-desktop-icons-ng
+dnf install -y still-control stillcenter swai swai-inst stillcount-client adw-gtk3-theme gnome-shell-extension-desktop-icons-ng
 
 echo "Installing misc packages..."
 dnf install -y git lorax \

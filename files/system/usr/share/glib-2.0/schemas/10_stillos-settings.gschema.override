@@ -63,5 +63,5 @@ appicon-margin = 2
 panel-lengths = '{"0": 100}'
 panel-positions = '{"0": "TOP"}'
 panel-sizes = '{"0": 40}'
-panel-element-positions-monitors-sync: true
+panel-element-positions-monitors-sync = true
 panel-element-positions = '{"0": [{"element": "showAppsButton", "visible": true, "position": "stackedTL"}, {"element": "activitiesButton", "visible": true, "position": "stackedTL"}, {"element": "leftBox", "visible": true, "position": "stackedTL"}, {"element": "taskbar", "visible": true, "position": "stackedTL"}, {"element": "centerBox", "visible": true, "position": "stackedBR"}, {"element": "rightBox", "visible": true, "position": "stackedBR"}, {"element": "dateMenu", "visible": true, "position": "stackedBR"}, {"element": "systemMenu", "visible": true, "position": "stackedBR"}, {"element": "desktopButton", "visible": true, "position": "stackedBR"}]}'

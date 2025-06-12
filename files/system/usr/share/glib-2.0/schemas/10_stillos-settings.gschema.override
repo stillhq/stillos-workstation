@@ -14,7 +14,7 @@ button-layout = 'appmenu:minimize,maximize,close'
 
 [org.gnome.shell]
 always-show-log-out = true
-enabled-extensions = ['dash-to-panel@jderose9.github.com']
+enabled-extensions = ['dash-to-panel@jderose9.github.com', 'gtk4-ding@smedius.github.com', 'appindicatorsupport@rgcjonas.gmail.com']
 
 [org.gnome.shell.extensions.gtk4-ding]
 show-trash = false
@@ -25,11 +25,11 @@ icon-size = 'small'
 arrangeorder = 'DESCENDINGNAME'
 
 [org.gnome.desktop.background]
-picture-uri = '/usr/share/backgrounds/stillos1000/gleb-kozenko-1v-snxcyHHk-unsplash-light.jpg'
-picture-uri-dark = '/usr/share/backgrounds/stillos1000/gleb-kozenko-1v-snxcyHHk-unsplash-dark.jpg'
+picture-uri = '/usr/share/backgrounds/stillos-1000/gleb-kozenko-1v-snxcyHHk-unsplash-light.jpg'
+picture-uri-dark = '/usr/share/backgrounds/stillos-1000/gleb-kozenko-1v-snxcyHHk-unsplash-dark.jpg'
 
 [org.gnome.desktop.screensaver]
-picture-uri = '/usr/share/backgrounds/stillos1000/gleb-kozenko-1v-snxcyHHk-unsplash.jpg'
+picture-uri = '/usr/share/backgrounds/stillos-1000/gleb-kozenko-1v-snxcyHHk-unsplash.jpg'
 
 [org.gnome.desktop.interface]
 gtk-theme = "adw-gtk3"

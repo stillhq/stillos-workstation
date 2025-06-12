@@ -24,3 +24,6 @@ ALMALINUX_MANTISBT_PROJECT_VERSION="10"
 REDHAT_SUPPORT_PRODUCT="AlmaLinux"
 REDHAT_SUPPORT_PRODUCT_VERSION="10"
 EOF
+
+kver=$(cd /usr/lib/modules && echo * | awk '{print $1}')
+dracut -vf /usr/lib/modules/$kver/initramfs.img $kver

@@ -1,0 +1,41 @@
+Welcome to the preview version of stillOS :).
+This read me contains important information about what you may want to test out.
+
+We are trying to build the first distribution of Linux you can install on a
+non-technical person's computer without worrying about it.
+
+We do this using bootc technology that uses container technology to make updates
+a lot more reliable. The read-only file system also has security benefits
+preventing both accidental and malicious damage to the root file system.
+
+stillCenter is our software store. Apps are curated to make sure only high
+quality apps that work well on stillOS's Wayland/ReadOnly system are accepted on
+the store. This preview build does only have a few apps curated, but our team
+will be going through all of Flathub by the time stillOS leaves it's preview
+stages. We also aim for stillCenter to be the fastest software center, and we're
+close, although there is some lag in the search we need to fix.
+
+SWAI is our electron-based runtime for treating web apps like desktop apps. This
+helps us bridge the Linux app compatibility issue by utilizing web apps like
+Microsoft Office Web. To test this out, I recommend installing "Excalidraw" from
+stillCenter as that is an app listed that does not require a login. More SWAI
+apps will be listed on stillCenter shortly!
+
+stillCenter is our tool for customizing GNOME. The goal is to make customizing
+the layout of GNOME as easy as KDE by integrating with popular extensions behind
+the scenes. There's also a Zorin OS style layout switcher to check out.
+
+Outside of all of these features, we are putting a lot of work into just general
+polish of the distribution, so if there's anything you find missing let us know.
+
+WE WANT FEEDBACK!!!
+This is a preview, and we want stillOS to become the ultimate Linux experience.
+Please email any bugs you find, or ideas you have to my personal email at
+cameron@stillhq.io. I will be reading every single email.
+
+Thanks so much for trying out stillOS :) ! We hope you enjoy this modern take on
+a Linux distribution. I personally have been working on this preview build for
+2 years and I am now working on getting a team behind it!
+
+- Cameron Knauff
+Lead Developer

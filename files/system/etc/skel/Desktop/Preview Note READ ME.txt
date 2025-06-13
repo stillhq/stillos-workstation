@@ -33,7 +33,7 @@ This is a preview, and we want stillOS to become the ultimate Linux experience.
 Please email any bugs you find, or ideas you have to my personal email at
 cameron@stillhq.io. I will be reading every single email.
 
-Feel free to also join the Discord: https://discord.gg/UfRHNjxz
+Feel free to also join the Discord: https://discord.gg/acCwx45Vr9
 
 Thanks so much for trying out stillOS :) ! We hope you enjoy this modern take on
 a Linux distribution. I personally have been working on this preview build for

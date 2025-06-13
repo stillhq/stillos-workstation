@@ -25,6 +25,11 @@ stillCenter is our tool for customizing GNOME. The goal is to make customizing
 the layout of GNOME as easy as KDE by integrating with popular extensions behind
 the scenes. There's also a Zorin OS style layout switcher to check out.
 
+There are a LOT OF BUGS in this preview, there will be new bug fixes daily for
+in the coming weeks leading up to the full release. These updates should apply
+automatically when you reboot, but if you want to manually trigger updates, run
+'sudo bootc upgrade'
+
 Outside of all of these features, we are putting a lot of work into just general
 polish of the distribution, so if there's anything you find missing let us know.
 

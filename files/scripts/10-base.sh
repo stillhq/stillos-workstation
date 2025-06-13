@@ -4,7 +4,7 @@ set -xeuo pipefail
 
 # Example of how you start customizing the image
 
-sudo dnf upgrade -y
+dnf upgrade -y
 
 dnf install -y 'dnf-command(config-manager)'
 dnf config-manager --set-enabled crb

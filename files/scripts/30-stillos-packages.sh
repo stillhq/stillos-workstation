@@ -25,9 +25,7 @@ dnf install -y git lorax \
     fuse
 
 # Removing GNOME Software
-dnf remove -y gnome-software firefox
-
-flatpak install --noninteractive flathub org.onlyoffice.desktopeditors org.mozilla.firefox
+dnf remove -y gnome-software gnome-tour gnome-extensions-app
 
 systemctl disable rpm-ostree-countme.service
 systemctl enable stillcount.service

@@ -14,7 +14,7 @@ button-layout = 'appmenu:minimize,maximize,close'
 
 [org.gnome.shell]
 always-show-log-out = true
-enabled-extensions = ['dash-to-panel@jderose9.github.com', 'gtk4-ding@smedius.github.com', 'appindicatorsupport@rgcjonas.gmail.com']
+enabled-extensions = ['dash-to-panel@jderose9.github.com', 'gtk4-ding@smedius.gitlab.com', 'appindicatorsupport@rgcjonas.gmail.com']
 favorite-apps = ['firefox.desktop', 'io.stillhq.stillCenter.desktop', 'onlyoffice-desktopeditors.desktop', 'org.gnome.TextEditor.desktop', 'org.gnome.Calculator.desktop']
 
 [org.gnome.shell.extensions.gtk4-ding]

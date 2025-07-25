@@ -116,6 +116,7 @@ jobs:
     uses: AlmaLinux/atomic-ci/.github/workflows/retag-image.yml@v7
     with:
       image: ${{ needs.build-image.outputs.image-ref }}@${{ needs.build-image.outputs.digest }}
+      digest: ${{ needs.build-image.outputs.digest }}
       tag: |
         ${{ needs.set-env.outputs.LATEST_TAG }}
         ${{ needs.build-image.outputs.major-version }}

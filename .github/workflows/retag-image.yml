@@ -1,0 +1,56 @@
+name: Retag image
+on:
+  workflow_call:
+    inputs:
+      image:
+        description: "Image reference, excluding hash"
+        required: true
+        type: string
+      digest:
+        description: "Image hash digest"
+        required: true
+        type: string
+      tag:
+        description: "New Image tag(s)"
+        required: true
+        type: string
+      REGISTRY:
+        description: "The registry where the image will be pushed"
+        required: false
+        type: string
+        default: "ghcr.io"
+      REGISTRY_USER:
+        description: "The username to use for the registry"
+        required: false
+        type: string
+        default: "${{ github.actor }}"
+    secrets:
+      REGISTRY_TOKEN:
+        description: "The token to use for the registry"
+        required: true
+
+jobs:
+  retag-image:
+    name: Retag image
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Install Crane
+        uses: imjasonh/setup-crane@31b88efe9de28ae0ffa220711af4b60be9435f6e # v0.4
+
+      - name: Login to Container Registry
+        uses: redhat-actions/podman-login@4934294ad0449894bcd1e9f191899d7292469603 # v1.7
+        with:
+          registry: ${{ inputs.REGISTRY }}
+          username: ${{ inputs.REGISTRY_USER }}
+          password: ${{ secrets.REGISTRY_TOKEN }}
+
+      - name: Tag image
+        shell: bash
+        run: |
+          # Read tags into an array (strips trailing newline) and loop
+          mapfile -t tags <<< "${{ inputs.tag }}"
+          for tag in "${tags[@]}"; do
+            [[ -z "$tag" ]] && continue
+            crane tag ${{ inputs.image }}@${{ inputs.digest }} "$tag"
+          done

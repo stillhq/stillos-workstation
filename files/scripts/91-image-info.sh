@@ -6,12 +6,12 @@ set -xeuo pipefail
 
 cat << 'EOF' > /etc/os-release
 NAME="stillOS"
-VERSION="10-26m2a"
+VERSION="10.1-26m4a"
 ID="stillos"
 ID_LIKE="almalinux rhel centos fedora"
-VERSION_ID="10"
+VERSION_ID="10.1"
 PLATFORM_ID="platform:el10"
-PRETTY_NAME="stillOS 10 (Snapshot 26m2a)"
+PRETTY_NAME="stillOS 10.1"
 ANSI_COLOR="0;34"
 LOGO="fedora-logo-icon"
 CPE_NAME="cpe:/o:almalinux:almalinux:10::baseos"

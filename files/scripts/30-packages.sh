@@ -11,8 +11,8 @@ dnf install -y --nobest  \
 
 echo "Swapping GNOME"
 dnf remove -y gnome-shell-extension-background-logo
-dnf swap -y gnome-shell https://download.copr.fedorainfracloud.org/results/still/stillos-alma/alma+epel-10-x86_64_v2/10113620-gnome-shell/gnome-shell-47.4-3.el10.still.1.x86_64_v2.rpm
-dnf swap -y mutter https://download.copr.fedorainfracloud.org/results/still/stillos-alma/epel-10-x86_64/10110199-mutter/mutter-47.5-8.el10.x86_64.rpm
+dnf swap -y gnome-shell https://download.copr.fedorainfracloud.org/results/still/stillos-alma/alma+epel-10-x86_64_v2/10280318-gnome-shell/gnome-shell-47.4-3.el10.still.1.x86_64_v2.rpm
+dnf swap -y mutter https://download.copr.fedorainfracloud.org/results/still/stillos-alma/alma+epel-10-x86_64_v2/10280356-mutter/mutter-47.5-8.el10.x86_64_v2.rpm
 dnf swap -y gnome-session-wayland-session stillos-session
 dnf swap -y ptyxis still-terminal
 

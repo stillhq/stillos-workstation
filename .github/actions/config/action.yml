@@ -59,7 +59,7 @@ runs:
         REGISTRY=quay.io
         REGISTRY_USER=stillhq+github_ci
         IMAGE_PATH=${{ github.repository_owner }}
-        IMAGE_NAME=stillos-workstation-edge
+        IMAGE_NAME=stillos-workstation
         PLATFORMS="amd64"
         # Variants: empty string for default (no suffix), then other variant names
         VARIANTS=",nvidia"

@@ -13,7 +13,7 @@ rootpw --lock
 %end
 
 %post --erroronfail --log=/root/anaconda-post.log
-bootc switch --mutate-in-place --transport registry quay.io/stillhq/stillos-workstation-edge:latest
+bootc switch --mutate-in-place --transport registry quay.io/stillhq/stillos-workstation:latest
 
 rm -f /var/lib/systemd/random-seed
 systemctl disable kdump.service

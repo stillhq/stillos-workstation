@@ -46,14 +46,6 @@ dnf install -y \
     NetworkManager-openvpn-gnome \
     lldb \
     gdb \
-    qemu-kvm \
-    libvirt \
-    libvirt-client \
-    virt-install \
-    virt-top \
-    bridge-utils \
-    libguestfs-tools \
-    virt-manager \
     epiphany
 
 # Removing Unused Software

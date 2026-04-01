@@ -3,9 +3,14 @@
 set -xeuo pipefail
 
 # Enable Network Autoconnections
-cat > /etc/NetworkManager/conf.d/00-autoconnect.conf << 'EOF'
+cat > /etc/NetworkManager/conf.d/99-autoconnect-everything.conf << 'EOF'
+[main]
+# Force NM to create default connections for ALL interfaces
+no-auto-default=*
+
 [connection]
-connection.autoconnect=true
+# Ensure those generated connections actually start up
+connection.autoconnect=yes
 EOF
 
 # Disable Timezone and Network Spokes

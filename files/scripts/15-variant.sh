@@ -19,6 +19,9 @@ elif [[ "${VARIANT}" == "nvidia" ]]; then
         akmod-nvidia \
         xorg-x11-drv-nvidia-cuda
 
+    # Fix boot environmental variable
+    echo "GSK_RENDERER=ngl" >> /etc/environment
+
 else
     echo "Unknown variant: ${VARIANT}"
     exit 1

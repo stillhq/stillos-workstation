@@ -4,10 +4,6 @@ set -xeuo pipefail
 
 # Enable Network Autoconnections
 cat > /etc/NetworkManager/conf.d/99-autoconnect-everything.conf << 'EOF'
-[main]
-# Force NM to create default connections for ALL interfaces
-no-auto-default=*
-
 [connection]
 # Ensure those generated connections actually start up
 connection.autoconnect=yes
@@ -15,7 +11,10 @@ EOF
 
 # Disable Timezone and Network Spokes
 mkdir -p /etc/anaconda/conf.d
-cat > /etc/anaconda/conf.d/99-hide-spokes.conf << 'EOF'
+cat > /etc/anaconda/conf.d/99-stillos-defaults.conf << 'EOF'
+[Network]
+default_on_boot = FIRST_WIRED_WITH_LINK
+
 [UI]
 hidden_spokes =
     NetworkSpoke

@@ -10,8 +10,7 @@ set -xeuo pipefail
 # Branding
 dnf swap -y almalinux-logos stillos-logos
 dnf swap -y almalinux-backgrounds stillos-backgrounds-1000
-dnf swap -y plymouth-theme-spinner https://download.copr.fedorainfracloud.org/results/still/stillos-alma/epel-10-x86_64/09148146-plymouth/plymouth-theme-spinner-24.004.60-1.el10.x86_64.rpm
-
+dnf swap -y plymouth-theme-spinner https://download.copr.fedorainfracloud.org/results/still/stillos-alma/alma+epel-10-x86_64_v2/10461721-plymouth-theme-still-spinner/plymouth-theme-still-spinner-0.9.5-6.el10.noarch.rpm
 # Flatpak
 mkdir -p /etc/flatpak/remotes.d
 curl \

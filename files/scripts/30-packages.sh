@@ -24,7 +24,7 @@ dnf -y --refresh distro-sync --allowerasing --best \
 
 echo "Installing all system packages..."
 dnf install -y \
-    https://kojipkgs.fedoraproject.org//packages/gnome-shell-extension-just-perfection/35.0/1.el10_2/noarch/gnome-shell-extension-just-perfection-35.0-1.el10_2.noarch.rpm \
+    https://kojipkgs.fedoraproject.org//packages/gnome-shell-extension-just-perfection/36.0/1.fc45/noarch/gnome-shell-extension-just-perfection-36.0-1.fc45.noarch.rpm \
     https://kojipkgs.fedoraproject.org//packages/micro/2.0.11/10.fc41/x86_64/micro-2.0.11-10.fc41.x86_64.rpm \
     rsms-inter-fonts \
     rsms-inter-vf-fonts \

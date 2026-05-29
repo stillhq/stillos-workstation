@@ -9,8 +9,6 @@ dnf install -y --nobest  \
     @rpm-development-tools \
     @system-tools
 
-dnf upgrade -y
-
 echo "Swapping GNOME"
 dnf remove -y gnome-shell-extension-background-logo
 dnf swap -y gnome-session-wayland-session stillos-session

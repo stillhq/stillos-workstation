@@ -7,7 +7,7 @@ dnf config-manager --set-enabled crb
 dnf config-manager --save --setopt=exclude=PackageKit,PackageKit-command-not-found,rootfiles
 
 dnf config-manager --add-repo https://gitlab.com/stillhq/stillOS/packages/stillos-release-final/-/raw/a10/stillos-alma.repo
-dnf copr enable still/stillos-10-wayland-enablement-stack almalinux-10-x86_64_v2 -y
+dnf copr enable still/stillos-10-wayland-enablement-stack rhel-10-x86_64 -y
 dnf install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-$(rpm -E %rhel).noarch.rpm
 
 dnf install -y --nogpgcheck https://dl.fedoraproject.org/pub/epel/epel-release-latest-$(rpm -E %rhel).noarch.rpm

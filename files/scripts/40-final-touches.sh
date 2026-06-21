@@ -32,3 +32,6 @@ systemctl disable rpm-ostree-countme.service
 rm -rf /etc/systemd/system/bootc-fetch-apply-updates.service.d
 systemctl enable stillcount.service
 systemctl enable sam.service
+
+# Remove RHEL branding
+rm /usr/share/glib-2.0/schemas/org.gnome.desktop.interface.rhel.gschema.override

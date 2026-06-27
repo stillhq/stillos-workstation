@@ -14,14 +14,6 @@ dnf remove -y gnome-shell-extension-background-logo
 dnf swap -y gnome-session-wayland-session stillos-session
 dnf swap -y ptyxis still-terminal
 
-dnf -y --refresh distro-sync --allowerasing --best \
-  gdm gnome-shell mutter gnome-control-center gnome-session \
-  gnome-settings-daemon gnome-initial-setup gnome-remote-desktop \
-  xdg-desktop-portal xdg-desktop-portal-gnome gvfs \
-  evolution-data-server gnome-online-accounts libgweather \
-  pipewire wireplumber xorg-x11-server-Xwayland upower \
-  iio-sensor-proxy switcheroo-control
-
 echo "Installing all system packages..."
 dnf install -y \
     https://kojipkgs.fedoraproject.org//packages/micro/2.0.11/10.fc41/x86_64/micro-2.0.11-10.fc41.x86_64.rpm \

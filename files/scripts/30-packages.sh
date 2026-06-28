@@ -48,7 +48,7 @@ dnf install -y \
     broadcom-wl \
     webkit2gtk4.1
 
-swai_inst https://gitlab.com/stillhq/stillOS/saDB-repo/-/raw/main/swai_apps/io-stillhq-forums.swai
+swai-inst https://gitlab.com/stillhq/stillOS/saDB-repo/-/raw/main/swai_apps/io-stillhq-forums.swai
 
 # Disabling broadcom WiFi drivers
 ln -sf /dev/null /etc/modprobe.d/broadcom-wl-blacklist.conf

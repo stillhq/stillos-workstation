@@ -1,5 +1,8 @@
 set -xeuo pipefail
 
+tree /
+exit 1
+
 dnf upgrade -y
 
 dnf install -y 'dnf-command(config-manager)'

@@ -48,7 +48,7 @@ dnf install -y \
     broadcom-wl \
     webkit2gtk4.1
 
-mkdir /usr/local/share
+mkdir -p /usr/local/share
 swai-inst install https://gitlab.com/stillhq/stillOS/saDB-repo/-/raw/main/swai_apps/io-stillhq-forums.swai
 
 # Disabling broadcom WiFi drivers

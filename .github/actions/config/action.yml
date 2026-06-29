@@ -61,8 +61,8 @@ runs:
         IMAGE_PATH=${{ github.repository_owner }}
         IMAGE_NAME=stillos-workstation-edge
         PLATFORMS="amd64"
-        # Variants: empty string for default (no suffix), then other variant names
-        VARIANTS=",nvidia"
+        # Empty string selects the default image with no variant suffix.
+        VARIANTS=""
 
         echo "REGISTRY=${REGISTRY}" >> $GITHUB_OUTPUT
         echo "REGISTRY_USER=${REGISTRY_USER}" >> $GITHUB_OUTPUT
@@ -73,7 +73,7 @@ runs:
         echo "VARIANTS=${VARIANTS}" >> $GITHUB_OUTPUT
 
         if [[ "${{ inputs.VARIANT }}" == "ALL" ]]; then
-          echo "MATRIX={\"variant\": $(echo $VARIANTS | jq -cR 'split(",")')}" >> $GITHUB_OUTPUT
+          echo 'MATRIX={"variant": [""]}' >> $GITHUB_OUTPUT
         else
           echo "MATRIX={\"variant\": [\"${{ inputs.VARIANT }}\"]}" >> $GITHUB_OUTPUT
         fi

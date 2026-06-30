@@ -47,18 +47,6 @@ sed -i \
     /usr/share/nautilus-python/extensions/nautilus-admin.py
 glib-compile-schemas /usr/share/glib-2.0/schemas
 
-# Disable Timezone and Network Spokes
-mkdir -p /etc/anaconda/conf.d
-cat > /etc/anaconda/conf.d/99-stillos-defaults.conf << 'EOF'
-[Network]
-default_on_boot = FIRST_WIRED_WITH_LINK
-
-[UI]
-hidden_spokes =
-    NetworkSpoke
-    TimezoneSpoke
-EOF
-
 # Disable Command Not Found PackageKit
 sed -i -e 's/^SoftwareSourceSearch=true/SoftwareSourceSearch=false/' /etc/PackageKit/CommandNotFound.conf
 

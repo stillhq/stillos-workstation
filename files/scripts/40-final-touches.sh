@@ -50,10 +50,9 @@ glib-compile-schemas /usr/share/glib-2.0/schemas
 # Disable Command Not Found PackageKit
 sed -i -e 's/^SoftwareSourceSearch=true/SoftwareSourceSearch=false/' /etc/PackageKit/CommandNotFound.conf
 
-# Turn on ZSH
-curl -fsSL https://gitlab.com/stillhq/stillOS/still-zsh/-/raw/master/skel/.zshrc?ref_type=heads \
+# Add ZSH Config to Skel
+curl -fsSL https://gitlab.com/stillhq/stillOS/still-zsh/-/raw/master/skel/.zshrc \
     -o /etc/skel/.zshrc
-cp /etc/skel/.zshrc /var/roothome/.zshrc
 
 sed -i 's|^SHELL=.*|SHELL=/bin/zsh|' /etc/default/useradd
 

@@ -24,6 +24,7 @@ dnf install -y \
     still-terminal-nautilus \
     stillcenter \
     swai \
+    swai-inst \
     stillcount-client \
     adw-gtk3-theme \
     gnome-shell-extension-desktop-icons-ng \

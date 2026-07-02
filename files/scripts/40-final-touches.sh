@@ -39,12 +39,6 @@ curl -fsSL https://raw.githubusercontent.com/yannmasoch/nautilus-my-computer/dev
     -o /usr/share/nautilus-python/extensions/nautilus-my-computer.py
 curl -fsSL https://raw.githubusercontent.com/yannmasoch/nautilus-my-computer/dev/io.github.yannmasoch.nautilus-my-computer.gschema.xml \
     -o /usr/share/glib-2.0/schemas/io.github.yannmasoch.nautilus-my-computer.gschema.xml
-curl -fsSL https://raw.githubusercontent.com/MacTavishAO/nautilus-admin-gtk4/refs/heads/master/extension/nautilus-admin.py \
-    -o /usr/share/nautilus-python/extensions/nautilus-admin.py
-sed -i \
-    -e 's|@NAUTILUS_PATH@|/usr/bin/nautilus|g' \
-    -e 's|@CMAKE_INSTALL_PREFIX@|/usr|g' \
-    /usr/share/nautilus-python/extensions/nautilus-admin.py
 glib-compile-schemas /usr/share/glib-2.0/schemas
 
 # Disable Command Not Found PackageKit

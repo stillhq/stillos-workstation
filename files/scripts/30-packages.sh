@@ -47,7 +47,8 @@ dnf install -y \
     gdb \
     epiphany \
     broadcom-wl \
-    webkit2gtk4.1
+    webkit2gtk4.1 \
+    nautilus-folder-icons
 
 # Disabling broadcom WiFi drivers
 ln -sf /dev/null /etc/modprobe.d/broadcom-wl-blacklist.conf

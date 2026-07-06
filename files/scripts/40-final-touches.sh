@@ -33,14 +33,6 @@ method=auto
 EOF
 chmod 600 /etc/NetworkManager/system-connections/stillos-wired.nmconnection
 
-# Install Nautilus extensions system-wide
-mkdir -p /usr/share/nautilus-python/extensions /usr/share/glib-2.0/schemas
-curl -fsSL https://raw.githubusercontent.com/pizzalovingnerd/nautilus-my-computer/main/nautilus-my-computer.py \
-    -o /usr/share/nautilus-python/extensions/nautilus-my-computer.py
-curl -fsSL https://raw.githubusercontent.com/pizzalovingnerd/nautilus-my-computer/main/io.github.yannmasoch.nautilus-my-computer.gschema.xml \
-    -o /usr/share/glib-2.0/schemas/io.github.yannmasoch.nautilus-my-computer.gschema.xml
-glib-compile-schemas /usr/share/glib-2.0/schemas
-
 # Disable Command Not Found PackageKit
 sed -i -e 's/^SoftwareSourceSearch=true/SoftwareSourceSearch=false/' /etc/PackageKit/CommandNotFound.conf
 

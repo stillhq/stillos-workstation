@@ -50,3 +50,16 @@ systemctl enable sam.service
 
 # Remove RHEL branding
 rm /usr/share/glib-2.0/schemas/org.gnome.desktop.interface.rhel.gschema.override
+
+# GTK 4 defaults to its Vulkan renderer, but the NVK driver in AlmaLinux 10's
+# Mesa can lose the nouveau device while GNOME Initial Setup renders its time
+# zone page (Fedora bug 2359799). Keep the workaround scoped to the setup
+# wizard; the regular desktop and applications can continue to use Vulkan.
+sed -i \
+    's|^Exec=/usr/libexec/gnome-initial-setup|Exec=/usr/bin/env GSK_RENDERER=gl /usr/libexec/gnome-initial-setup|' \
+    /usr/share/applications/gnome-initial-setup.desktop \
+    /etc/xdg/autostart/gnome-initial-setup-first-login.desktop
+grep -q '^Exec=/usr/bin/env GSK_RENDERER=gl /usr/libexec/gnome-initial-setup' \
+    /usr/share/applications/gnome-initial-setup.desktop
+grep -q '^Exec=/usr/bin/env GSK_RENDERER=gl /usr/libexec/gnome-initial-setup' \
+    /etc/xdg/autostart/gnome-initial-setup-first-login.desktop

@@ -63,3 +63,7 @@ grep -q '^Exec=/usr/bin/env GSK_RENDERER=gl /usr/libexec/gnome-initial-setup' \
     /usr/share/applications/gnome-initial-setup.desktop
 grep -q '^Exec=/usr/bin/env GSK_RENDERER=gl /usr/libexec/gnome-initial-setup' \
     /etc/xdg/autostart/gnome-initial-setup-first-login.desktop
+
+# Use BGRT Plymouth Screen
+sed -i 's/^Theme=.*/Theme=bgrt/' /etc/plymouth/plymouthd.conf
+plymouth-set-default-theme -R bgrt

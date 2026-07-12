@@ -66,4 +66,4 @@ grep -q '^Exec=/usr/bin/env GSK_RENDERER=gl /usr/libexec/gnome-initial-setup' \
 
 # Use BGRT Plymouth Screen
 sed -i 's/^Theme=.*/Theme=bgrt/' /etc/plymouth/plymouthd.conf
-plymouth-set-default-theme -R bgrt
+plymouth-set-default-theme bgrt

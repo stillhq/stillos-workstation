@@ -32,6 +32,7 @@ dnf install -y \
     gnome-shell-extension-desktop-icons-ng \
     gnome-shell-extension-appindicator \
     gnome-shell-extension-just-perfection \
+    still-gnome-extension \
     stillexplore \
     quick-setup \
     still-zsh \

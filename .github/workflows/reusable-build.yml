@@ -98,6 +98,8 @@ jobs:
 
           cat /etc/os-release
           bootc -V
+          kernel_version="$(rpm -q --qf '%{VERSION}-%{RELEASE}.%{ARCH}' kernel-core)"
+          modinfo -k "${kernel_version}" wl
           EOF
 
           podman run --rm \

@@ -34,7 +34,7 @@ dnf install -y \
     gnome-shell-extension-just-perfection \
     still-gnome-extension \
     stillexplore \
-    quick-setup \
+    'quick-setup >= 10.2.10-3' \
     still-zsh \
     git \
     lorax \
@@ -50,9 +50,18 @@ dnf install -y \
     gdb \
     epiphany \
     broadcom-wl \
+    akmod-wl \
+    akmods \
+    kernel-devel-matched \
     webkit2gtk4.1 \
     nautilus-folder-icons \
-    nautilus-my-computer 
+    nautilus-my-computer
+
+echo "Building the Broadcom wl module for the baked kernel"
+kernel_version="$(rpm -q --qf '%{VERSION}-%{RELEASE}.%{ARCH}' kernel-core)"
+akmods --force --kernels "${kernel_version}"
+depmod -a "${kernel_version}"
+modinfo -k "${kernel_version}" wl >/dev/null
 
 # Disabling broadcom WiFi drivers
 ln -sf /dev/null /etc/modprobe.d/broadcom-wl-blacklist.conf

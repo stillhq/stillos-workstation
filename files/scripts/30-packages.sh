@@ -49,14 +49,9 @@ dnf install -y \
     lldb \
     gdb \
     epiphany \
-    broadcom-wl \
     webkit2gtk4.1 \
     nautilus-folder-icons \
     nautilus-my-computer 
-
-# Disabling broadcom WiFi drivers
-ln -sf /dev/null /etc/modprobe.d/broadcom-wl-blacklist.conf
-bash -c 'echo "blacklist wl" > /etc/modprobe.d/default-disable-broadcom-wl.conf'
 
 # Removing Unused Software
 dnf remove -y gnome-software gnome-tour gnome-extensions-app

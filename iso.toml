@@ -1,19 +1,24 @@
 # ba0fde3d-bee7-4307-b97b-17d0d20aff50
 [customizations.installer.kickstart]
 contents = """
+%pre
+echo "GSK_RENDERER=ngl" >> /etc/environment
+%end
 
-autopart --nohome --fstype=ext4
 zerombr
-clearpart --none --initlabel --nolvm
+clearpart --none --initlabel
+reqpart --add-boot
+part swap --recommended
+part / --fstype=ext4 --size=1024 --grow
 timezone America/Los_Angeles --utc
-network --hostname stillos --bootproto=dhcp --device=link --activate --onboot=yes
+network --hostname stillos --bootproto=dhcp --device=link --activate --onboot=on
 rootpw --lock
 
-%addon com_redhat_kdump --disable
+%addon com_redhat_kdump --disable end
 %end
 
 %post --erroronfail --log=/root/anaconda-post.log
-bootc switch --mutate-in-place --transport registry quay.io/stillhq/stillos-workstation-edge:latest
+bootc switch --mutate-in-place --transport registry quay.io/stillhq/stillos-workstation:latest
 
 rm -f /var/lib/systemd/random-seed
 systemctl disable kdump.service
@@ -25,7 +30,7 @@ systemctl disable kdump.service
 enable = [
     "org.fedoraproject.Anaconda.Modules.Localization",
     "org.fedoraproject.Anaconda.Modules.Storage",
-    "org.fedoraproject.Anaconda.Modules.Timezone",
+    "org.fedoraproject.Anaconda.Modules.Timezone"
 ]
 disable = [
     "org.fedoraproject.Anaconda.Modules.Network",

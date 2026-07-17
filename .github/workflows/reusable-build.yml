@@ -44,7 +44,7 @@ on:
         description: "Whether to generate SBOM for this variant"
         required: false
         type: boolean
-        default: true
+        default: false
     secrets:
       REGISTRY_TOKEN:
         required: true

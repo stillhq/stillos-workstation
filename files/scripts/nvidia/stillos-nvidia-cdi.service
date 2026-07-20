@@ -1,0 +1,11 @@
+[Unit]
+Description=Generate NVIDIA Container Device Interface specification
+ConditionFileIsExecutable=/usr/bin/nvidia-ctk
+After=systemd-modules-load.service local-fs.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/nvidia-ctk cdi generate --output=/etc/cdi/nvidia.yaml
+
+[Install]
+WantedBy=multi-user.target

@@ -114,6 +114,14 @@ The host contains the CUDA libraries needed to expose the GPU to containers;
 CUDA application runtimes and compilers should come from the selected CUDA
 container image rather than being installed into the immutable host.
 
+Hybrid laptops keep the integrated GPU as the desktop renderer and expose the
+NVIDIA GPU through switcheroo-control and PRIME Render Offload. Launch an
+application on NVIDIA with either `switcherooctl launch <command>` or
+`prime-run <command>`; PRIME is not forced on dedicated-GPU installations. The
+image also includes NVIDIA Settings, NVDEC/VA-API
+support, fine-grained NVIDIA runtime power management, and automatic NVIDIA
+CDI generation for Podman and Distrobox containers.
+
 ### Broadcom `wl` Wi-Fi
 
 Every workstation image builds Broadcom's proprietary `wl` driver for the

@@ -121,10 +121,24 @@ jobs:
           if [[ "${{ inputs.variant }}" == "nvidia" ]]; then
             echo "Verifying NVIDIA modules for ${kernel_release}"
             rpm -q kmod-nvidia-open nvidia-driver nvidia-driver-cuda-libs \
-              nvidia-container-toolkit
+              nvidia-container-toolkit nvidia-settings libva-nvidia-driver \
+              switcheroo-control
             nvidia-ctk --version
             nvidia-container-cli --version
+            command -v nvidia-settings
+            command -v switcherooctl
+            command -v prime-run
+            prime-run /usr/bin/env | grep -q '^__NV_PRIME_RENDER_OFFLOAD=1$'
+            prime-run /usr/bin/env | grep -q '^__GLX_VENDOR_LIBRARY_NAME=nvidia$'
+            prime-run /usr/bin/env | grep -q '^__VK_LAYER_NV_optimus=NVIDIA_only$'
             ldconfig -p | grep -q 'libcuda\.so\.1'
+            grep -q '^options nvidia NVreg_DynamicPowerManagement=0x02$' \
+              /usr/lib/modprobe.d/stillos-nvidia.conf
+            test -L /etc/systemd/system/graphical.target.wants/switcheroo-control.service
+            test -L /etc/systemd/system/multi-user.target.wants/stillos-nvidia-cdi.service
+            test -e /usr/share/glvnd/egl_vendor.d/10_nvidia.json
+            test -e /usr/share/vulkan/implicit_layer.d/nvidia_layers.json
+            test -e /usr/share/vulkan/icd.d/nvidia_icd.x86_64.json
             nvidia_module_path=$(modinfo -k "${kernel_release}" -n nvidia)
             canonical_nvidia_module_path=$(realpath "${nvidia_module_path}")
             modinfo -k "${kernel_release}" nvidia

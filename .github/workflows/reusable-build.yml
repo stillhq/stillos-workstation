@@ -117,6 +117,16 @@ jobs:
           ! rpm -q akmods
           ! getent passwd akmods
           test ! -e /run/akmods
+
+          if [[ "${{ inputs.variant }}" == "nvidia" ]]; then
+            echo "Verifying NVIDIA modules for ${kernel_release}"
+            rpm -q kmod-nvidia-open nvidia-driver nvidia-driver-cuda-libs
+            nvidia_module_path=$(modinfo -k "${kernel_release}" -n nvidia)
+            canonical_nvidia_module_path=$(realpath "${nvidia_module_path}")
+            modinfo -k "${kernel_release}" nvidia
+            grep -q "^/usr/lib/modules/${kernel_release}/" <<<"${canonical_nvidia_module_path}"
+            rpm -qf "${nvidia_module_path}"
+          fi
           EOF
 
           podman run --rm \

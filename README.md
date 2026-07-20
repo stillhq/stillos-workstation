@@ -100,6 +100,16 @@ for you automatically. You can also build locally:
 make image
 ```
 
+To build the specialized image with the prebuilt NVIDIA open kernel module and
+userspace driver libraries, select the `nvidia` variant:
+
+```sh
+make image VARIANT=nvidia IMAGE_NAME=localhost/stillos-workstation-nvidia
+```
+
+CI publishes this variant as
+`quay.io/stillhq/stillos-workstation-nvidia:latest` after its image tests pass.
+
 ### Broadcom `wl` Wi-Fi
 
 Every workstation image builds Broadcom's proprietary `wl` driver for the

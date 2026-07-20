@@ -62,7 +62,7 @@ runs:
         IMAGE_NAME=stillos-workstation
         PLATFORMS="amd64"
         # Empty string selects the default image with no variant suffix.
-        VARIANTS=""
+        VARIANTS=",nvidia"
 
         echo "REGISTRY=${REGISTRY}" >> $GITHUB_OUTPUT
         echo "REGISTRY_USER=${REGISTRY_USER}" >> $GITHUB_OUTPUT
@@ -73,7 +73,7 @@ runs:
         echo "VARIANTS=${VARIANTS}" >> $GITHUB_OUTPUT
 
         if [[ "${{ inputs.VARIANT }}" == "ALL" ]]; then
-          echo 'MATRIX={"variant": [""]}' >> $GITHUB_OUTPUT
+          echo 'MATRIX={"variant": ["", "nvidia"]}' >> $GITHUB_OUTPUT
         else
           echo "MATRIX={\"variant\": [\"${{ inputs.VARIANT }}\"]}" >> $GITHUB_OUTPUT
         fi

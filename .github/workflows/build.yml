@@ -57,7 +57,7 @@ jobs:
       image-path: ${{ needs.set-env.outputs.IMAGE_PATH }}
       registry: ${{ needs.set-env.outputs.REGISTRY }}
       registry-user: ${{ needs.set-env.outputs.REGISTRY_USER }}
-      generate-sbom: true
+      generate-sbom: ${{ matrix.variant != 'nvidia' }}
     secrets:
       REGISTRY_TOKEN: ${{ secrets.REGISTRY_TOKEN }}
       SIGNING_SECRET: ${{ secrets.SIGNING_SECRET }}

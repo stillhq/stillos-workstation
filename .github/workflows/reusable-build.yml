@@ -120,7 +120,11 @@ jobs:
 
           if [[ "${{ inputs.variant }}" == "nvidia" ]]; then
             echo "Verifying NVIDIA modules for ${kernel_release}"
-            rpm -q kmod-nvidia-open nvidia-driver nvidia-driver-cuda-libs
+            rpm -q kmod-nvidia-open nvidia-driver nvidia-driver-cuda-libs \
+              nvidia-container-toolkit
+            nvidia-ctk --version
+            nvidia-container-cli --version
+            ldconfig -p | grep -q 'libcuda\.so\.1'
             nvidia_module_path=$(modinfo -k "${kernel_release}" -n nvidia)
             canonical_nvidia_module_path=$(realpath "${nvidia_module_path}")
             modinfo -k "${kernel_release}" nvidia

@@ -100,8 +100,9 @@ for you automatically. You can also build locally:
 make image
 ```
 
-To build the specialized image with the prebuilt NVIDIA open kernel module and
-userspace driver libraries, select the `nvidia` variant:
+To build the specialized image with the prebuilt NVIDIA open kernel module,
+CUDA driver libraries, and NVIDIA Container Toolkit, select the `nvidia`
+variant:
 
 ```sh
 make image VARIANT=nvidia IMAGE_NAME=localhost/stillos-workstation-nvidia
@@ -109,6 +110,9 @@ make image VARIANT=nvidia IMAGE_NAME=localhost/stillos-workstation-nvidia
 
 CI publishes this variant as
 `quay.io/stillhq/stillos-workstation-nvidia:latest` after its image tests pass.
+The host contains the CUDA libraries needed to expose the GPU to containers;
+CUDA application runtimes and compilers should come from the selected CUDA
+container image rather than being installed into the immutable host.
 
 ### Broadcom `wl` Wi-Fi
 

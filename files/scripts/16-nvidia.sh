@@ -36,27 +36,21 @@ install -D -m 0644 "${repo_source}" /etc/yum.repos.d/almalinux-nvidia.repo
 install -D -m 0644 "${key_source}" \
     /etc/pki/rpm-gpg/RPM-GPG-KEY-NVIDIA-CUDA-10
 
-# The toolkit repository shipped by the base image currently points at an
-# obsolete key location. Store the current key in the immutable image.
-container_key=/etc/pki/rpm-gpg/RPM-GPG-KEY-NVIDIA-CONTAINER-TOOLKIT
-curl --fail --location --silent --show-error \
-    https://nvidia.github.io/libnvidia-container/gpgkey \
-    --output "${container_key}"
-chmod 0644 "${container_key}"
-if [[ -f /etc/yum.repos.d/nvidia-container-toolkit.repo ]]; then
-    sed -i "s|^gpgkey=.*|gpgkey=file://${container_key}|" \
-        /etc/yum.repos.d/nvidia-container-toolkit.repo
-fi
+dnf --enablerepo=almalinux-nvidia makecache
 
-dnf --disablerepo=nvidia-container-toolkit \
-    --enablerepo=almalinux-nvidia makecache
-
-# Explicit cuda-libs selection supplies libcuda.so.1 and avoids
-# cuda-driver-devel's /usr/local layout, which is incompatible with bootc.
+# The host supplies the driver, CUDA driver libraries, and container injection
+# tooling. CUDA application runtimes and compilers stay inside CUDA containers;
+# installing cuda-toolkit on the host would place it under /usr/local, which
+# this bootc image intentionally relocates into mutable /var.
 dnf install -y \
     kmod-nvidia-open \
     nvidia-driver \
-    nvidia-driver-cuda-libs
+    nvidia-driver-cuda-libs \
+    nvidia-container-toolkit
+
+command -v nvidia-ctk
+command -v nvidia-container-cli
+ldconfig -p | grep -q 'libcuda\.so\.1'
 
 trap - EXIT
 cleanup_nvidia_build

@@ -1,0 +1,17 @@
+--- a/wl-kmod.spec
++++ b/wl-kmod.spec
+@@ -431,6 +431,14 @@ Patch36:    wl-kmod-037_kernel_6.13_remove_flush_scheduled_work.patch
+    #  Apply to EL 10.1 point release and later
+    %{__sed} -i  's/ >= KERNEL_VERSION(6, 14, 0)/ >= KERNEL_VERSION(6, 12, 0)/g' src/wl/sys/wl_cfg80211_hybrid.c
+   %endif
++  %if %{kvr} >= 211
++   # RHEL 10.2 backports the upstream 6.17 cfg80211 radio_idx callback
++   # arguments while retaining a 6.12 kernel version.
++   %{__sed} -i  's/ >= KERNEL_VERSION(6, 17, 0)/ >= KERNEL_VERSION(6, 12, 0)/g' src/wl/sys/wl_cfg80211_hybrid.c
++   # RHEL also backports fatal objtool processing. Its multi-object target is
++   # absolute, so RPM Fusion's relative wl.o target-specific override misses.
++   echo '$(obj)/wl.o: private override objtool-enabled :=' >> Makefile
++  %endif
+  %endif
+ %endif
+ popd

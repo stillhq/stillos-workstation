@@ -98,6 +98,25 @@ jobs:
 
           cat /etc/os-release
           bootc -V
+
+          mapfile -t kernel_releases < <(
+            find /usr/lib/modules -mindepth 1 -maxdepth 1 -type d -printf '%f\n' | sort
+          )
+          test "${#kernel_releases[@]}" -eq 1
+          kernel_release=${kernel_releases[0]}
+
+          echo "Verifying Broadcom wl for ${kernel_release}"
+          module_path=$(modinfo -k "${kernel_release}" -n wl)
+          canonical_module_path=$(realpath "${module_path}")
+          modinfo -k "${kernel_release}" wl
+          grep -q "^/usr/lib/modules/${kernel_release}/" <<<"${canonical_module_path}"
+          rpm -qf "${module_path}"
+          rpm -q broadcom-wl
+          test ! -e "/usr/lib/modules/${kernel_release}/build/Makefile"
+          ! compgen -G '/usr/src/akmods/wl-kmod*'
+          ! rpm -q akmods
+          ! getent passwd akmods
+          test ! -e /run/akmods
           EOF
 
           podman run --rm \

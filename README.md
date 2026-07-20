@@ -100,6 +100,47 @@ for you automatically. You can also build locally:
 make image
 ```
 
+### Broadcom `wl` Wi-Fi
+
+Every workstation image builds Broadcom's proprietary `wl` driver for the
+single RHEL kernel installed in that image. The build deliberately uses the
+kernel directory under `/usr/lib/modules`; `uname -r` would report the builder
+host kernel during a container build. The resulting versioned `kmod-wl` RPM
+owns the module below:
+
+```text
+/usr/lib/modules/<exact-kernel-release>/extra/wl/wl.ko.xz
+```
+
+AlmaLinux's `modinfo` displays this usr-merged location using its compatible
+`/lib/modules/...` spelling; the build and CI checks canonicalize it with
+`realpath` and require the result to be below `/usr/lib/modules/<release>/`.
+
+The source is Broadcom STA `6.30.223.271`, carried by RPM Fusion EL10's pinned
+`akmod-wl-6.30.223.271-62.el10` package. That package embeds RPM Fusion's
+`wl-kmod-6.30.223.271-62.el10.src.rpm` and its complete compatibility patch
+series. stillOS adds
+`files/scripts/patches/wl-kmod-62-rhel-10.2-radio-index.patch` because RHEL
+10.2 backports the upstream Linux 6.17 cfg80211 radio-index API and fatal
+objtool processing into its 6.12 kernel. Because the proprietary Broadcom
+object cannot be analyzed by objtool, the patch disables objtool for Kbuild's
+exact final `$(obj)/wl.o` target. The embedded SRPM is checksum-pinned in
+`35-broadcom-wl.sh`.
+
+To update the driver, review RPM Fusion's new `wl-kmod` spec and patches,
+update the pinned `wl_version`, `akmod_release`, and embedded-SRPM SHA-256 in
+`35-broadcom-wl.sh`, then rebase or remove the stillOS compatibility patch.
+Build the image and confirm both the build-time and CI `modinfo -k` checks pass
+for the new kernel.
+
+Broadcom labels this source **"Redistributable, no modification permitted."**
+RPM Fusion applies compatibility patches to the open-source shim around the
+precompiled Broadcom object. The driver is end-of-life and RPM Fusion warns
+that it may contain unresolved vulnerabilities. Image maintainers must decide
+whether the Broadcom license permits redistribution in stillOS's published
+images and whether carrying unsupported proprietary code matches project
+policy.
+
 #### Local development with Makefile
 
 The provided `Makefile` includes several useful commands for local development and testing:

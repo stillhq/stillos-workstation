@@ -100,7 +100,7 @@ jobs:
           bootc -V
 
           mapfile -t kernel_releases < <(
-            find /usr/lib/modules -mindepth 1 -maxdepth 1 -type d -printf '%f\n' | sort
+            rpm -q --qf '%{VERSION}-%{RELEASE}.%{ARCH}\n' kernel-core
           )
           test "${#kernel_releases[@]}" -eq 1
           kernel_release=${kernel_releases[0]}
@@ -142,8 +142,9 @@ jobs:
             nvidia_module_path=$(modinfo -k "${kernel_release}" -n nvidia)
             canonical_nvidia_module_path=$(realpath "${nvidia_module_path}")
             modinfo -k "${kernel_release}" nvidia
-            grep -q "^/usr/lib/modules/${kernel_release}/" <<<"${canonical_nvidia_module_path}"
-            rpm -qf "${nvidia_module_path}"
+            grep -q "^/lib/modules/${kernel_release}/" <<<"${nvidia_module_path}"
+            grep -q '^/usr/lib/modules/' <<<"${canonical_nvidia_module_path}"
+            rpm -qf "${canonical_nvidia_module_path}"
           fi
           EOF
 

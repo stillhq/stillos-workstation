@@ -12,10 +12,10 @@ readonly wl_srpm_sha256=fb8c555169f429259c8881564412700c816682d4822e52862fcc182c
 readonly script_dir=$(realpath "$(dirname "$0")")
 
 mapfile -t kernel_releases < <(
-    find /usr/lib/modules -mindepth 1 -maxdepth 1 -type d -printf '%f\n' | sort
+    rpm -q --qf '%{VERSION}-%{RELEASE}.%{ARCH}\n' kernel-core
 )
 if [[ ${#kernel_releases[@]} -ne 1 ]]; then
-    echo "Expected exactly one installed kernel, found: ${kernel_releases[*]:-(none)}" >&2
+    echo "Expected exactly one installed kernel-core, found: ${kernel_releases[*]:-(none)}" >&2
     exit 1
 fi
 readonly kernel_release=${kernel_releases[0]}

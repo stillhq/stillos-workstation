@@ -125,10 +125,11 @@ CDI generation for Podman and Distrobox containers.
 ### Broadcom `wl` Wi-Fi
 
 Every workstation image builds Broadcom's proprietary `wl` driver for the
-single RHEL kernel installed in that image. The build deliberately uses the
-kernel directory under `/usr/lib/modules`; `uname -r` would report the builder
-host kernel during a container build. The resulting versioned `kmod-wl` RPM
-owns the module below:
+single `kernel-core` installed in that image. The build deliberately queries
+the RPM database; `uname -r` would report the builder host kernel during a
+container build, while `/usr/lib/modules` can also contain kABI-compatible
+out-of-tree module sources for another kernel release. The resulting versioned
+`kmod-wl` RPM owns the module below:
 
 ```text
 /usr/lib/modules/<exact-kernel-release>/extra/wl/wl.ko.xz

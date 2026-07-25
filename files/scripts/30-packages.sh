@@ -51,7 +51,12 @@ dnf install -y \
     epiphany \
     webkit2gtk4.1 \
     nautilus-folder-icons \
-    nautilus-my-computer 
+    nautilus-my-computer \ 
+    qemu-kvm \
+    libvirt \
+    virt-install \
+    virt-manager \
+    virt-viewer
 
 # Removing Unused Software
 dnf remove -y gnome-software gnome-tour gnome-extensions-app

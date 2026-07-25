@@ -51,7 +51,7 @@ dnf install -y \
     epiphany \
     webkit2gtk4.1 \
     nautilus-folder-icons \
-    nautilus-my-computer \ 
+    nautilus-my-computer \
     qemu-kvm \
     libvirt \
     virt-install \

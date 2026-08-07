@@ -81,6 +81,14 @@ echo "Installing Broadcom wl"
 dnf install -y "${kmod_rpm}"
 depmod -a "${kernel_release}"
 
+echo "Keeping Broadcom wl disabled until Quick Setup enables it"
+install -d -m 0755 /etc/modprobe.d
+ln -sfn /dev/null /etc/modprobe.d/broadcom-wl-blacklist.conf
+printf '%s\n' \
+    "blacklist wl" \
+    "install wl /bin/false" \
+    > /etc/modprobe.d/default-disable-broadcom-wl.conf
+
 echo "Verifying Broadcom wl for ${kernel_release}"
 modinfo -k "${kernel_release}" wl
 readonly module_path=$(modinfo -k "${kernel_release}" -n wl)

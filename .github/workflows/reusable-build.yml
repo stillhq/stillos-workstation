@@ -112,6 +112,15 @@ jobs:
           grep -q "^/usr/lib/modules/${kernel_release}/" <<<"${canonical_module_path}"
           rpm -qf "${module_path}"
           rpm -q broadcom-wl
+
+          echo "Verifying Broadcom wl remains disabled until Quick Setup"
+          test -L /etc/modprobe.d/broadcom-wl-blacklist.conf
+          test "$(readlink /etc/modprobe.d/broadcom-wl-blacklist.conf)" = /dev/null
+          grep -Fxq 'blacklist wl' /etc/modprobe.d/default-disable-broadcom-wl.conf
+          grep -Fxq 'install wl /bin/false' /etc/modprobe.d/default-disable-broadcom-wl.conf
+          modprobe --showconfig | grep -Fxq 'blacklist wl'
+          modprobe --showconfig | grep -Fxq 'install wl /bin/false'
+
           test ! -e "/usr/lib/modules/${kernel_release}/build/Makefile"
           ! compgen -G '/usr/src/akmods/wl-kmod*'
           ! rpm -q akmods
